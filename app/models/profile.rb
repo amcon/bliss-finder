@@ -1,5 +1,9 @@
 class Profile < ApplicationRecord
 
+	def full_name
+		[first_name, last_name].join(" ")
+	end
+
 
 	FIRST_NAMES = [
 		"Trant",
@@ -464,11 +468,15 @@ class Profile < ApplicationRecord
 	end
 
 	def random_full_name
-		"#{random_first_name}" + "#{random_last_name}"
+		[random_first_name, random_last_name].join(" ")
 	end
 
 	def random_occupation
 		OCCUPATIONS.sample
+	end
+
+	def random_age
+		(18..100).to_a.sample
 	end
 
 end
