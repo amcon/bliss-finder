@@ -15,6 +15,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_30_184848) do
   enable_extension "plpgsql"
 
   create_table "profiles", force: :cascade do |t|
+    t.string "first_name", default: "", null: false
+    t.string "last_name", default: "", null: false
+    t.string "occupation", default: "", null: false
+    t.string "email", default: "", null: false
+    t.string "profile_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

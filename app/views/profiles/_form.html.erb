@@ -12,6 +12,26 @@
   <% end %>
 
   <div>
-    <%= form.submit %>
+    <!-- profile pic upload here -->
+    <div class="form-input">
+      <%= form.label :email %>
+      <%= form.text_field :email%>
+    </div>
+    <div class="form-input">
+      <%= form.label :question_1, "Do you fuck with Charly Bliss?" %>
+      <%= form.radio_button :question_1, "true" %>
+      <%= form.label :true, "yes" %>
+      <%= form.radio_button :question_1, "false" %>
+      <%= form.label :false, "no" %>
+    </div>
+    <div class="form-input">
+      <%= form.label :question_2, "Do you want to find out what happens if you don't fuck with Charly Bliss?" %>
+      <%= form.radio_button :question_2, "true" %>
+      <%= form.label :true, "yes" %>
+      <%= form.radio_button :question_2, "false" %>
+      <%= form.label :false, "no" %>
+    </div>
+
+    <%= form.submit(class: 'btn-primary') %>
   </div>
 <% end %>

@@ -10,7 +10,12 @@
   </head>
 
   <body>
-    <h1>Hello World!</h1>
-    <%= yield %>
+    <%= render partial: 'shared/header' %>
+    <div class="main-content">
+      <div class="max-width-container">
+        <%= yield %>
+      </div>
+    </div>
+    <%= render partial: 'shared/footer' %>
   </body>
 </html>
