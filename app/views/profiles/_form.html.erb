@@ -12,28 +12,42 @@
   <% end %>
 
   <div>
-    <!-- profile pic upload here -->
-    <!-- <%= f.hidden_field(:profile_image_cache) %>
-    <%= f.file_field(:profile_image) %> -->
-    <!-- <div id="profile_widget_opener"></div> -->
+    <%= f.hidden_field(:first_name, value: "#{Profile::FIRST_NAMES&.sample}") %>
+    <%= f.hidden_field(:last_name, value: "#{Profile::LAST_NAMES&.sample}") %>
+    <%= f.hidden_field(:occupation, value: "#{Profile::OCCUPATIONS&.sample}") %>
+    <%= f.hidden_field(:age, value: "#{(18..100).to_a.sample}") %>
     <button type="button" id="profile_widget_opener" class="cloudinary-button">Upload files</button>
     <div class="form-input">
       <%= f.label :email %>
       <%= f.text_field :email%>
     </div>
     <div class="form-input">
-      <%= f.label :question_1, "Do you fuck with Charly Bliss?" %>
-      <%= f.radio_button :question_1, "true" %>
-      <%= f.label :true, "yes" %>
-      <%= f.radio_button :question_1, "false" %>
-      <%= f.label :false, "no" %>
+      <%= f.label :question_1, "Have you been in love before?" %>
+      <%= f.radio_button :question_1, "yes" %>
+      <%= f.label :yes, "yes" %>
+      <%= f.radio_button :question_1, "no" %>
+      <%= f.label :no, "no" %>
     </div>
     <div class="form-input">
-      <%= f.label :question_2, "Do you want to find out what happens if you don't fuck with Charly Bliss?" %>
-      <%= f.radio_button :question_2, "true" %>
-      <%= f.label :true, "yes" %>
-      <%= f.radio_button :question_2, "false" %>
-      <%= f.label :false, "no" %>
+      <%= f.label :question_2, "Are you an introvert or extrovert?" %>
+      <%= f.radio_button :question_2, "introvert" %>
+      <%= f.label :introvert, "introvert" %>
+      <%= f.radio_button :question_2, "extrovert" %>
+      <%= f.label :extrovert, "extrovert" %>
+    </div>
+    <div class="form-input">
+      <%= f.label :question_3, "Are you capable of being truly vulnerable with another soul?" %>
+      <%= f.radio_button :question_3, "maybe" %>
+      <%= f.label :maybe, "maybe" %>
+      <%= f.radio_button :question_3, "for sure" %>
+      <%= f.label :for_sure, "for sure" %>
+    </div>
+    <div class="form-input">
+      <%= f.label :question_4, "What are you looking for in a partner?" %>
+      <%= f.radio_button :question_4, "money" %>
+      <%= f.label :money, "money" %>
+      <%= f.radio_button :question_4, "looks" %>
+      <%= f.label :looks, "looks" %>
     </div>
 
     <%= f.submit(class: 'btn-primary') %>

@@ -1,7 +1,28 @@
-<div id="<%= dom_id profile %>">
-	<h1>TEST</h1>
-	<% if @profile&.profile_image&.present? %>
-		<%= cl_image_tag @profile.profile_image_url, :width=>150 %>
-	<% end %>
-</div>
+<% if @profile.present? %>
+	<div class="profile" id="<%= dom_id profile %>">
+		<div class="image-container">
+			<% if @profile.profile_image.present? %>
+				<%= cl_image_tag @profile.profile_image_url, :width=>150 %>
+			<% end %>
+		</div>
+		<div class="main-info">
+			<div class="profile-pair">
+				<h2>First Name:</h2>
+				<p><%= @profile.first_name %></p>
+			</div>
+			<div class="profile-pair">
+				<h2>Last Name:</h2>
+				<p><%= @profile.last_name %></p>
+			</div>
+			<div class="profile-pair">
+				<h2>Occupation:</h2>
+				<p><%= @profile.occupation %></p>
+			</div>
+			<div class="profile-pair">
+				<h2>Age:</h2>
+				<p><%= @profile.age %></p>
+			</div>
+		</div>
+	</div>
+<% end %>
 

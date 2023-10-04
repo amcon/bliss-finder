@@ -85,6 +85,35 @@ input[type="text"] {
 	color: rgb(85, 59, 192);
 }
 
+.profile {
+	display: flex;
+	flex-direction: column;
+	.image-container {
+		padding: 1rem;
+		img {
+			width: 100%;
+			max-width: 500px;
+			border: 6px solid rgb(111, 80, 204);
+			border-radius: 10px;
+			box-sizing: border-box;
+		}
+	}
+	.main-info {
+		padding: 1rem;
+		.profile-pair {
+			margin-bottom: 3rem;
+			h2 {
+				font-size: 1.25rem;
+			}
+			h2, p {
+				display: inline;
+				margin: 0;
+				line-height: 1rem;
+			}
+		}
+	}
+}
+
 footer {
 	padding: 1rem;
 	min-height: 10vh;
