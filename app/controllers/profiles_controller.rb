@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile, only: %i[ show edit update destroy ]
+  before_action :set_profile, only: %i[ show edit update randomize destroy ]
 
   # GET /profiles or /profiles.json
   def index
@@ -47,12 +47,25 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def randomize
+    respond_to do |format|
+      if @profile.update(first_name: @profile.random_first_name, last_name: @profile.random_last_name, occupation: @profile.random_occupation, age: @profile.random_age)
+        @profile.save
+        format.html { redirect_to profile_url(@profile), notice: "Profile was successfully randomized." }
+        format.json { render :show, status: :ok, location: @profile }
+      else
+        format.html { render :show, status: :unprocessable_entity }
+        format.json { render json: @profile.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # DELETE /profiles/1 or /profiles/1.json
   def destroy
     @profile.destroy
 
     respond_to do |format|
-      format.html { redirect_to profiles_url, notice: "Profile was successfully destroyed." }
+      format.html { redirect_to root_url, notice: "Profile was successfully destroyed." }
       format.json { head :no_content }
     end
   end
