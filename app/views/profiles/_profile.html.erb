@@ -7,12 +7,8 @@
 		</div>
 		<div class="main-info">
 			<div class="profile-pair">
-				<h2>First Name:</h2>
-				<p><%= @profile.first_name %></p>
-			</div>
-			<div class="profile-pair">
-				<h2>Last Name:</h2>
-				<p><%= @profile.last_name %></p>
+				<h2>Name:</h2>
+				<p><%= @profile.full_name %></p>
 			</div>
 			<div class="profile-pair">
 				<h2>Occupation:</h2>
@@ -21,6 +17,14 @@
 			<div class="profile-pair">
 				<h2>Age:</h2>
 				<p><%= @profile.age %></p>
+			</div>
+			<div class="profile-pair">
+				<h2>Favorite Song:</h2>
+				<p>"I Need a New Boyfriend" by Charly Bliss</p>
+			</div>
+			<div class="share-container">
+				<a href="#" class="fa fa-instagram"></a>
+				<a href="#" class="fa fa-twitter"></a>
 			</div>
 		</div>
 	</div>
