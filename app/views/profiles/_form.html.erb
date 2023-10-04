@@ -1,4 +1,4 @@
-<%= form_with(model: profile) do |form| %>
+<%= form_with(model: profile) do |f| %>
   <% if profile.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
@@ -13,25 +13,29 @@
 
   <div>
     <!-- profile pic upload here -->
+    <!-- <%= f.hidden_field(:profile_image_cache) %>
+    <%= f.file_field(:profile_image) %> -->
+    <!-- <div id="profile_widget_opener"></div> -->
+    <button type="button" id="profile_widget_opener" class="cloudinary-button">Upload files</button>
     <div class="form-input">
-      <%= form.label :email %>
-      <%= form.text_field :email%>
+      <%= f.label :email %>
+      <%= f.text_field :email%>
     </div>
     <div class="form-input">
-      <%= form.label :question_1, "Do you fuck with Charly Bliss?" %>
-      <%= form.radio_button :question_1, "true" %>
-      <%= form.label :true, "yes" %>
-      <%= form.radio_button :question_1, "false" %>
-      <%= form.label :false, "no" %>
+      <%= f.label :question_1, "Do you fuck with Charly Bliss?" %>
+      <%= f.radio_button :question_1, "true" %>
+      <%= f.label :true, "yes" %>
+      <%= f.radio_button :question_1, "false" %>
+      <%= f.label :false, "no" %>
     </div>
     <div class="form-input">
-      <%= form.label :question_2, "Do you want to find out what happens if you don't fuck with Charly Bliss?" %>
-      <%= form.radio_button :question_2, "true" %>
-      <%= form.label :true, "yes" %>
-      <%= form.radio_button :question_2, "false" %>
-      <%= form.label :false, "no" %>
+      <%= f.label :question_2, "Do you want to find out what happens if you don't fuck with Charly Bliss?" %>
+      <%= f.radio_button :question_2, "true" %>
+      <%= f.label :true, "yes" %>
+      <%= f.radio_button :question_2, "false" %>
+      <%= f.label :false, "no" %>
     </div>
 
-    <%= form.submit(class: 'btn-primary') %>
+    <%= f.submit(class: 'btn-primary') %>
   </div>
 <% end %>

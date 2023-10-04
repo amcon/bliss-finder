@@ -1,5 +1,7 @@
 class Profile < ApplicationRecord
 
+	mount_uploader :profile_image, ProfileImageUploader
+
 	def full_name
 		[first_name, last_name].join(" ")
 	end
