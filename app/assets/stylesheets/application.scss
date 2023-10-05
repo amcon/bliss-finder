@@ -64,25 +64,42 @@ header {
 
 label {
 	display: inline-block;
-/*	width: 100%;*/
+	// width: 100%;
+	margin-bottom: 1rem;
 }
 
 input[type="text"] {
 	width: 100%;
+	box-sizing: border-box;
 }
 
 .form-input {
-	margin-bottom: 1rem;
+	margin-bottom: 1.5rem;
 }
 
-.btn-primary {
+.btn-primary, .cloudinary-button {
 	width: 100%;
 	padding: 0.5rem;
 	border: 3px solid rgb(202, 123, 156);
-	background-color: rgb(242, 164, 200);
+	background-color: rgb(242, 164, 200) !important;
 	font-size: 1rem;
-	font-weight: bolder;
-	color: rgb(85, 59, 192);
+	font-weight: bolder !important;
+	color: rgb(85, 59, 192) !important;
+	box-sizing: border-box;
+	border-radius: 4px;
+	min-height: 3.5rem;
+}
+
+.cloudinary-button {
+	text-align: center;
+}
+
+.form-heading {
+	margin: 5rem 0;
+}
+
+.profile-form {
+	margin-bottom: 2rem;
 }
 
 .profile {
