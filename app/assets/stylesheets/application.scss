@@ -73,6 +73,13 @@ input[type="text"] {
 	box-sizing: border-box;
 }
 
+.radio-button {
+	margin-bottom: 1rem;
+	label, input {
+		display: inline;
+	}
+}
+
 .form-input {
 	margin-bottom: 1.5rem;
 }

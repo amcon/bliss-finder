@@ -21,8 +21,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_30_184848) do
     t.string "email", default: "", null: false
     t.string "age", default: "", null: false
     t.string "profile_image"
-    t.boolean "question_1", default: true
-    t.boolean "question_2", default: true
+    t.string "question_1", default: "netflix", null: false
+    t.string "question_2", default: "introvert", null: false
+    t.string "question_3", default: "maybe", null: false
+    t.string "question_4", default: "money", null: false
+    t.string "question_5", default: "physical_touch", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

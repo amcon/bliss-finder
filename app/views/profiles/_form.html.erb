@@ -25,14 +25,22 @@
       <%= f.text_field :email, required: true%>
     </div>
     <div class="form-input">
-      <%= f.label :question_1, "Have you been in love before?" %>
+      <%= f.label :question_1, "What best describes your ideal date night?" %>
       <div class="radio-button">
-        <%= f.radio_button :question_1, "yes" %>
-        <%= f.label :yes, "yes" %>
+        <%= f.radio_button :question_1, "netflix and chill" %>
+        <%= f.label :netflix, "netflix and chill" %>
       </div>
       <div class="radio-button">
-        <%= f.radio_button :question_1, "no" %>
-        <%= f.label :no, "no" %>
+        <%= f.radio_button :question_1, "camping" %>
+        <%= f.label :camping, "camping" %>
+      </div>
+      <div class="radio-button">
+        <%= f.radio_button :question_1, "consult the fœrbîddēn ørb regarding the prophet's warning" %>
+        <%= f.label :consult, "consult the fœrbîddēn ørb regarding the prophet's warning" %>
+      </div>
+      <div class="radio-button">
+        <%= f.radio_button :question_1, "omakase" %>
+        <%= f.label :omakase, "omakase" %>
       </div>
     </div>
     <div class="form-input">
@@ -66,6 +74,25 @@
       <div class="radio-button">
         <%= f.radio_button :question_4, "looks" %>
         <%= f.label :looks, "looks" %>
+      </div>
+    </div>
+    <div class="form-input">
+      <%= f.label :question_5, "What's your love language?" %>
+      <div class="radio-button">
+        <%= f.radio_button :question_5, "physical touch" %>
+        <%= f.label :physical_touch, "physical touch" %>
+      </div>
+      <div class="radio-button">
+        <%= f.radio_button :question_5, "acts of service" %>
+        <%= f.label :acts_of_service, "acts of service" %>
+      </div>
+      <div class="radio-button">
+        <%= f.radio_button :question_5, "words of affirmation" %>
+        <%= f.label :words_of_affirmation, "words of affirmation" %>
+      </div>
+      <div class="radio-button">
+        <%= f.radio_button :question_5, "portuguese" %>
+        <%= f.label :portuguese, "portuguese" %>
       </div>
     </div>
 
