@@ -1,5 +1,7 @@
 <footer>
-	<%= link_to terms_path do %>
-		<p>terms and conditions</p>
+	<% unless current_page?(coming_soon_path) || current_page?(root_path) %>
+		<%= link_to terms_path do %>
+			<p>terms and conditions</p>
+		<% end %>
 	<% end %>
 </footer>

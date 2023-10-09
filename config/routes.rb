@@ -7,9 +7,10 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  # root "articles#index"
-  root "profiles#new"
+  # root "profiles#new"
+  root "static#coming_soon"
 
   get :terms, to: 'static#terms'
+  get :coming_soon, to: 'static#coming_soon'
 
 end
