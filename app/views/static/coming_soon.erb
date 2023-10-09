@@ -2,4 +2,16 @@
 	<h1>Bliss-finder is under construction...</h1>
 	<p>Please check back on 10/24!</p>
 </div>
-<iframe src="https://found.ee/ineedanewboyfriend" class="foundee"></iframe>
+<!-- <iframe src="https://found.ee/ineedanewboyfriend" class="foundee"></iframe> -->
+<%= link_to "https://found.ee/ineedanewboyfriend", target: "_blank" do %>
+	<div class="card">
+		<div class="card-top">
+			<img src="https://static.found.ee/user/230446/res-fd9d72ee-ab7b-4f99-9c73-e526b8f74c81-CB-Boyfriend-Digital-Art.jpg" width="100%">
+		</div>
+		<div class="card-body">
+			<h4>Charly Bliss - I Need A New Boyfriend</h4>
+		</div>
+	</div>
+<% end %>
+
+<%= link_to "Pre-Save Now!", "https://found.ee/ineedanewboyfriend", class: "btn-primary landing-link", target: "_blank" %>
