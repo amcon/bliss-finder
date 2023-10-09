@@ -174,10 +174,25 @@ a {
 
 #mc_embed_shell {
 	width: 100%;
+	margin: 3rem 0;
 	#mc_embed_signup {
 		width: 100%;
 		form {
 			margin: 0;
+		}
+	}
+	#mce-responses {
+		margin: 0 !important;
+		padding: 0 !important;
+	}
+	#mc-embedded-subscribe {
+		border: 3px solid rgb(202, 123, 156) !important;
+		width: 100% !important;
+		font-size: 1rem;
+	}
+	#mc_embed_signup_scroll {
+		.mc-field-group {
+			width: 99.5%;
 		}
 	}
 }
