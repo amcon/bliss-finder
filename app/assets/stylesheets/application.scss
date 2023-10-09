@@ -172,6 +172,16 @@ a {
 	box-sizing: border-box;
 }
 
+#mc_embed_shell {
+	width: 100%;
+	#mc_embed_signup {
+		width: 100%;
+		form {
+			margin: 0;
+		}
+	}
+}
+
 footer {
 	padding: 1rem;
 	min-height: 10vh;
