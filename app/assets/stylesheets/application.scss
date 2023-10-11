@@ -198,10 +198,46 @@ a {
 	}
 }
 
+.home-container {
+	.home-section {
+		margin: 8rem 0;
+		padding-bottom: 8rem;
+		border-bottom: 4px solid rgb(85, 59, 192);
+	}
+	.mission {
+		text-align: center;
+		.text {
+			max-width: 635px;
+			h1 {
+				max-width: 500px;
+				margin: 1.5rem auto;
+			}
+		}
+		.btn-primary {
+			margin-top: 6rem;
+		}
+	}
+	.pre-save {
+
+	}
+	.mailing-list {
+		margin: 8rem 0;
+	}
+}
+
 footer {
 	padding: 1rem;
 	min-height: 10vh;
 	background-color: rgb(242, 164, 200);
 	color: rgb(85, 59, 192);
 	border-top: 3px solid rgb(202, 123, 156);
+	h1 {
+		margin: 2rem 0 4rem;
+	}
+	.text-right {
+		margin-top: 4rem;
+		font-size: .75rem;
+		text-align: right;
+		font-weight: 200;
+	}
 }

@@ -12,5 +12,6 @@ Rails.application.routes.draw do
 
   get :terms, to: 'static#terms'
   get :coming_soon, to: 'static#coming_soon'
+  get :home, to: 'static#home'
 
 end

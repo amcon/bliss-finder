@@ -1,7 +1,14 @@
 <footer>
 	<% unless current_page?(coming_soon_path) || current_page?(root_path) %>
+		<%= link_to root_path do %>
+			<h1>Bliss-Finder.com</h1>
+		<% end %>
 		<%= link_to terms_path do %>
 			<p>terms and conditions</p>
 		<% end %>
+		<%= link_to '//found.ee/ineedanewboyfriend' do %>
+			<p>pre-save 'I Need a New Boyfriend'</p>
+		<% end %>
 	<% end %>
+	<p class="text-right">All Rights Reserved Charly Bliss 2023</p>
 </footer>
