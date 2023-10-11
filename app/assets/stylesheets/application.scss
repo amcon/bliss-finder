@@ -40,8 +40,14 @@ header {
 	color: rgb(111, 80, 204);
 	display: flex;
 	align-items: center;
-	h1 {
-		margin: 0;
+	a {
+		// display: block;
+		// width: 100%;
+		h1 {
+			margin: 0;
+			font-size: 1.75rem;
+			// text-align: center;
+		}
 	}
 }
 
@@ -202,9 +208,10 @@ a {
 	.home-section {
 		margin: 8rem 0;
 		padding-bottom: 8rem;
-		border-bottom: 4px solid rgb(85, 59, 192);
+		border-bottom: 4px dashed rgb(85, 59, 192);
 	}
 	.mission {
+		margin-top: 4rem;
 		text-align: center;
 		.text {
 			max-width: 635px;
@@ -215,6 +222,8 @@ a {
 		}
 		.btn-primary {
 			margin-top: 6rem;
+			height: 5rem;
+			text-transform: uppercase;
 		}
 	}
 	.pre-save {
@@ -223,6 +232,13 @@ a {
 	.mailing-list {
 		margin: 8rem 0;
 	}
+}
+
+.banner-img {
+	width: 100%;
+	height: auto;
+	max-height: 55vh;
+	object-fit: cover;
 }
 
 footer {

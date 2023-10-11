@@ -24,6 +24,9 @@
   <body>
     <%= render partial: 'shared/header' %>
     <div class="main-content">
+      <% if current_page?(home_path) %>
+        <%= image_tag "banner.JPEG", class: "banner-img" %>
+      <% end %>
       <div class="max-width-container">
         <%= yield %>
       </div>
