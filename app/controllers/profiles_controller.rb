@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile, only: %i[ show edit update randomize destroy ]
+  before_action :set_profile, only: %i[ show edit update randomize destroy create_image ]
 
   # GET /profiles or /profiles.json
   def index
@@ -56,6 +56,56 @@ class ProfilesController < ApplicationController
       else
         format.html { render :show, status: :unprocessable_entity }
         format.json { render json: @profile.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def create_image
+    # connect to bannerbear
+    bb = Bannerbear::Client.new
+    # send the profile info to the template
+    @social_network = params[:social]
+    # new_profile = bb.create_image("PowdyxbdM14LZlYBAg",
+    #   modifications: [
+    #     {
+    #       "name": "Profile_pic",
+    #       "image_url": @profile.profile_image_url
+    #     },
+    #     {
+    #       "name": "Name_result",
+    #       "text": "Name: #{@profile.full_name}",
+    #     },
+    #     {
+    #       "name": "Age_result",
+    #       "text": "Age: #{@profile.age}",
+    #     },
+    #     {
+    #       "name": "Occupation_result",
+    #       "text": "Occupation: #{@profile.occupation}",
+    #     },
+    #   ]
+    # )
+    # get the image from bannerbear
+    response_image = true #bb.get_image(new_profile["uid"])
+    if response_image.present? && @social_network.present?
+      # use image in social media share
+      if @social_network.eql?("twitter")
+        puts "this is for twitter"
+      elsif @social_network.eql?("instagram")
+        puts "this is for instagram"
+      end
+      @response = 'success'
+      respond_to do |format|
+        format.html { redirect_to :back, notice: 'success' }
+        format.js
+      end
+    else
+      # something went wrong because the image wasn't created on bannerbear
+      puts "something went wrong. no response_image and social_network"
+      @response = 'failure'
+      respond_to do |format|
+        format.html { redirect_to :back, notice: 'sorry, something went wrong' }
+        format.js
       end
     end
   end

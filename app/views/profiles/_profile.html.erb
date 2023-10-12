@@ -23,10 +23,11 @@
 				<p>"I Need a New Boyfriend" by Charly Bliss</p>
 			</div>
 			<div class="share-container">
-				<a href="#" class="fa fa-instagram"></a>
-				<a href="#" class="fa fa-twitter"></a>
+				<%= link_to '', create_image_profile_path(@profile, social: "instagram"), class: "fa fa-instagram", remote: true %>
+				<%= link_to '', create_image_profile_path(@profile, social: "twitter"), class: "fa fa-twitter", remote: true %>
 			</div>
 		</div>
 	</div>
 <% end %>
+
 
