@@ -26,9 +26,11 @@
 			</div>
 			<% if @profile.generated_profile_img_url.present? %>
 				<div class="share-container">
-					<%= link_to share_to_social_profile_path(@profile, social: "instagram"), class: "btn-primary", remote: true do %>
-						<div class="fa fa-instagram"></div>
-						<p>Share to Instagram Story</p>
+					<% if browser.device.mobile? %>
+						<%= link_to share_to_social_profile_path(@profile, social: "instagram"), class: "btn-primary", remote: true do %>
+							<div class="fa fa-instagram"></div>
+							<p>Share to Instagram Story</p>
+						<% end %>
 					<% end %>
 					<%= link_to share_to_social_profile_path(@profile, social: "twitter"), class: "btn-primary", remote: true do %>
 						<div class="fa fa-twitter"></div>
@@ -38,7 +40,6 @@
 			<% end %>
 		</div>
 	</div>
-	<p>viewing on a mobile browser? <%= browser.device.mobile? %></p>
 <% end %>
 
 
