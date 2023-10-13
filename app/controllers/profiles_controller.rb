@@ -20,9 +20,7 @@ class ProfilesController < ApplicationController
       title: "Bliss-Finder.com",
       description: "Name: #{@profile.full_name}. Age: #{@profile.age}. Occupation: #{@profile.occupation}. Favorite Song: 'I Need a New Boyfriend' by Charly Bliss",
       image: {
-        _: @profile.profile_image_url,
-        width: 100,
-        height: 300
+        _: @profile.profile_image_url
       }
     }
 
