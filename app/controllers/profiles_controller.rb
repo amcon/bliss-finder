@@ -14,13 +14,13 @@ class ProfilesController < ApplicationController
     )
 
     set_meta_tags twitter: {
-      card: "summary_large_image",
+      card: "summary",
       site: "@charlybliss",
       url: request.original_url,
-      title: @profile.full_name,
+      title: "Bliss-Finder.com",
       description: "Name: #{@profile.full_name}. Age: #{@profile.age}. Occupation: #{@profile.occupation}. Favorite Song: 'I Need a New Boyfriend' by Charly Bliss",
       image: {
-        _: @profile.generated_profile_img_url,
+        _: @profile.profile_image_url,
         width: 100,
         height: 300
       }
