@@ -86,8 +86,8 @@ class ProfilesController < ApplicationController
     #   ]
     # )
     # get the image from bannerbear
-    response_image = true #bb.get_image(new_profile["uid"])
-    if response_image.present? && @social_network.present?
+    bb_image_object = bb.get_image("9e2VGL0qn6VA2nAdzEAv5mxr1") #(new_profile["uid"])
+    if bb_image_object.present? && @social_network.present?
       # use image in social media share
       if @social_network.eql?("twitter")
         x_credentials = {
@@ -95,10 +95,12 @@ class ProfilesController < ApplicationController
           api_key_secret:      ENV["X_API_SECRET"],
           access_token:        ENV["X_ACCESS_TOKEN"],
           access_token_secret: ENV["X_ACCESS_TOKEN_SECRET"],
+          bearer_token:        ENV["X_BEARER_TOKEN"]
         }
-        x_client = X::Client.new(**x_credentials)
-        puts "this is for twitter", x_client
-        x_client.get("users/me")
+        # x_client = X::Client.new(**x_credentials)
+        # puts "this is for twitter", x_client
+        # x_client.get("users/me")
+        @response_image = bb_image_object["image_url"]
       elsif @social_network.eql?("instagram")
         puts "this is for instagram"
       end
