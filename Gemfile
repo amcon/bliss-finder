@@ -39,6 +39,7 @@ gem 'cloudinary'
 gem 'dotenv-rails', '~> 2.8'
 gem 'bannerbear'
 gem "meta-tags"
+gem "browser"
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
