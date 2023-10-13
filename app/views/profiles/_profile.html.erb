@@ -20,11 +20,19 @@
 			</div>
 			<div class="profile-pair">
 				<h2>Favorite Song:</h2>
-				<p>"I Need a New Boyfriend" by Charly Bliss</p>
+				<p>
+					<%= link_to "I Need a New Boyfriend", "//found.ee/ineedanewboyfriend", target: "_blank" %> by <%= link_to "Charly Bliss", "https://www.charlybliss.com", target: "_blank" %>
+				</p>
 			</div>
 			<div class="share-container">
-				<%= link_to '', create_image_profile_path(@profile, social: "instagram"), class: "fa fa-instagram", remote: true %>
-				<%= link_to '', create_image_profile_path(@profile, social: "twitter"), class: "fa fa-twitter", remote: true %>
+				<%= link_to create_image_profile_path(@profile, social: "instagram"), class: "btn-primary", remote: true do %>
+					<div class="fa fa-instagram"></div>
+					<p>Share to Instagram Story</p>
+				<% end %>
+				<%= link_to create_image_profile_path(@profile, social: "twitter"), class: "btn-primary", remote: true do %>
+					<div class="fa fa-twitter"></div>
+					<p>Share on Twitter</p>
+				<% end %>
 			</div>
 		</div>
 	</div>

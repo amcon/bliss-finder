@@ -82,3 +82,5 @@ group :test do
   gem "selenium-webdriver"
 
 end
+
+gem "x", "~> 0.10.0"

@@ -156,6 +156,15 @@ a {
 				line-height: 1rem;
 			}
 		}
+		.share-container {
+			.btn-primary {
+				margin-bottom: 1rem;
+				.fa {
+					margin-right: 1rem;
+					font-size: 2rem;
+				}
+			}
+		}
 	}
 }
 

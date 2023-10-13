@@ -90,7 +90,15 @@ class ProfilesController < ApplicationController
     if response_image.present? && @social_network.present?
       # use image in social media share
       if @social_network.eql?("twitter")
-        puts "this is for twitter"
+        x_credentials = {
+          api_key:             ENV["X_API_KEY"],
+          api_key_secret:      ENV["X_API_SECRET"],
+          access_token:        ENV["X_ACCESS_TOKEN"],
+          access_token_secret: ENV["X_ACCESS_TOKEN_SECRET"],
+        }
+        x_client = X::Client.new(**x_credentials)
+        puts "this is for twitter", x_client
+        x_client.get("users/me")
       elsif @social_network.eql?("instagram")
         puts "this is for instagram"
       end
