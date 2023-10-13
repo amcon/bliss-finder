@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :profiles do
     member do
       put :randomize, to: 'profiles#randomize'
-      get :create_image, to: 'profiles#create_image'
+      get :share_to_social, to: 'profiles#share_to_social'
     end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

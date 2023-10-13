@@ -38,6 +38,7 @@ gem 'carrierwave'
 gem 'cloudinary'
 gem 'dotenv-rails', '~> 2.8'
 gem 'bannerbear'
+gem "meta-tags"
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
@@ -83,8 +84,5 @@ group :test do
 
 end
 
-gem "x", "~> 0.10.0"
 
-gem "omniauth", "~> 2.1"
-gem "omniauth-twitter", "~> 1.4"
-gem "omniauth-rails_csrf_protection", "~> 1.0"
+gem "x", "~> 0.10.0"

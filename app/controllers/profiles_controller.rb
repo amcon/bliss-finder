@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile, only: %i[ show edit update randomize destroy create_image ]
+  before_action :set_profile, only: %i[ show edit update randomize destroy share_to_social ]
 
   # GET /profiles or /profiles.json
   def index
@@ -8,11 +8,38 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/1 or /profiles/1.json
   def show
+    set_meta_tags(
+      title: @profile.full_name,
+      description: "Name: #{@profile.full_name}. Age: #{@profile.age}. Occupation: #{@profile.occupation}. Favorite Song: 'I Need a New Boyfriend' by Charly Bliss"
+    )
+
+    set_meta_tags twitter: {
+      card: "photo",
+      site: "@charlybliss",
+      url: request.original_url,
+      title: @profile.full_name,
+      description: "Name: #{@profile.full_name}. Age: #{@profile.age}. Occupation: #{@profile.occupation}. Favorite Song: 'I Need a New Boyfriend' by Charly Bliss",
+      image: {
+        _: @profile.generated_profile_img_url
+      }
+    }
+
+    # <meta name="twitter:card" content="summary" />
+    # <meta name="twitter:site" content="@nytimesbits" />
+    # <meta name="twitter:creator" content="@nickbilton" />
+    # <meta property="og:url" content="http://bits.blogs.nytimes.com/2011/12/08/a-twitter-for-my-sister/" />
+    # <meta property="og:title" content="A Twitter for My Sister" />
+    # <meta property="og:description" content="In the early days, Twitter grew so quickly that it was almost impossible to add new features because engineers spent their time trying to keep the rocket ship from stalling." />
+    # <meta property="og:image" content="http://graphics8.nytimes.com/images/2011/12/08/technology/bits-newtwitter/bits-newtwitter-tmagArticle.jpg" />
   end
 
   # GET /profiles/new
   def new
     @profile = Profile.new
+    set_meta_tags(
+      title: "Create a Profile",
+      description: "Here at Bliss-Finder™️, our mission is simple. Unite the world in harmony through meaningful connections. So go ahead, make a profile today and watch how quickly your life can change."
+    )
   end
 
   # GET /profiles/1/edit
@@ -22,6 +49,38 @@ class ProfilesController < ApplicationController
   # POST /profiles or /profiles.json
   def create
     @profile = Profile.new(profile_params)
+
+    # connect to bannerbear
+    bb = Bannerbear::Client.new
+    # send the profile info to the template
+    new_profile = bb.create_image("PowdyxbdM14LZlYBAg",
+      synchronous: true,
+      modifications: [
+        {
+          "name": "Profile_pic",
+          "image_url": @profile.profile_image_url
+        },
+        {
+          "name": "Name_result",
+          "text": "Name: #{@profile.full_name}",
+        },
+        {
+          "name": "Age_result",
+          "text": "Age: #{@profile.age}",
+        },
+        {
+          "name": "Occupation_result",
+          "text": "Occupation: #{@profile.occupation}",
+        },
+      ]
+    )
+    # get the image from bannerbear
+    bb_image_object = bb.get_image(new_profile["uid"])
+    puts 'bb_image_object is: ', bb_image_object
+    if bb_image_object.present?
+      @profile.generated_profile_img_url = bb_image_object["image_url"]
+      @profile.save
+    end
 
     respond_to do |format|
       if @profile.save
@@ -60,47 +119,12 @@ class ProfilesController < ApplicationController
     end
   end
 
-  def create_image
-    # connect to bannerbear
-    bb = Bannerbear::Client.new
-    # send the profile info to the template
-    @social_network = params[:social]
-    # new_profile = bb.create_image("PowdyxbdM14LZlYBAg",
-    #   modifications: [
-    #     {
-    #       "name": "Profile_pic",
-    #       "image_url": @profile.profile_image_url
-    #     },
-    #     {
-    #       "name": "Name_result",
-    #       "text": "Name: #{@profile.full_name}",
-    #     },
-    #     {
-    #       "name": "Age_result",
-    #       "text": "Age: #{@profile.age}",
-    #     },
-    #     {
-    #       "name": "Occupation_result",
-    #       "text": "Occupation: #{@profile.occupation}",
-    #     },
-    #   ]
-    # )
-    # get the image from bannerbear
-    bb_image_object = bb.get_image("9e2VGL0qn6VA2nAdzEAv5mxr1") #(new_profile["uid"])
-    if bb_image_object.present? && @social_network.present?
+  def share_to_social
+    @social_network = params["social"]
+    if @social_network.present?
       # use image in social media share
       if @social_network.eql?("twitter")
-        x_credentials = {
-          api_key:             ENV["X_API_KEY"],
-          api_key_secret:      ENV["X_API_SECRET"],
-          access_token:        ENV["X_ACCESS_TOKEN"],
-          access_token_secret: ENV["X_ACCESS_TOKEN_SECRET"],
-          bearer_token:        ENV["X_BEARER_TOKEN"]
-        }
-        # x_client = X::Client.new(**x_credentials)
-        # puts "this is for twitter", x_client
-        # x_client.get("users/me")
-        @response_image = bb_image_object["image_url"]
+        puts "this is for twitter"
       elsif @social_network.eql?("instagram")
         puts "this is for instagram"
       end
@@ -138,6 +162,6 @@ class ProfilesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def profile_params
-      params.require(:profile).permit(:first_name, :last_name, :occupation, :email, :age, :profile_image, :question_1, :question_2)
+      params.require(:profile).permit(:first_name, :last_name, :occupation, :email, :age, :profile_image, :question_1, :question_2, :question_3, :question_4, :question_5, :generated_profile_img_url)
     end
 end

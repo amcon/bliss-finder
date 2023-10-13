@@ -24,17 +24,18 @@
 					<%= link_to "I Need a New Boyfriend", "//found.ee/ineedanewboyfriend", target: "_blank" %> by <%= link_to "Charly Bliss", "https://www.charlybliss.com", target: "_blank" %>
 				</p>
 			</div>
-			<div class="share-container">
-				<%= link_to create_image_profile_path(@profile, social: "instagram"), class: "btn-primary", remote: true do %>
-					<div class="fa fa-instagram"></div>
-					<p>Share to Instagram Story</p>
-				<% end %>
-				<%= link_to create_image_profile_path(@profile, social: "twitter"), class: "btn-primary", remote: true do %>
-					<div class="fa fa-twitter"></div>
-					<p>Share on Twitter</p>
-				<% end %>
-			</div>
-			<p><%= request.original_url %></p>
+			<% if @profile.generated_profile_img_url.present? %>
+				<div class="share-container">
+					<%= link_to share_to_social_profile_path(@profile, social: "instagram"), class: "btn-primary", remote: true do %>
+						<div class="fa fa-instagram"></div>
+						<p>Share to Instagram Story</p>
+					<% end %>
+					<%= link_to share_to_social_profile_path(@profile, social: "twitter"), class: "btn-primary", remote: true do %>
+						<div class="fa fa-twitter"></div>
+						<p>Share on Twitter</p>
+					<% end %>
+				</div>
+			<% end %>
 		</div>
 	</div>
 <% end %>
