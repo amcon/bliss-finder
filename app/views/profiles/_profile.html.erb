@@ -26,12 +26,9 @@
 			</div>
 			<% if @profile.generated_profile_img_url.present? %>
 				<div class="share-container">
-					<% if true # browser.device.mobile? %>
-						<%= link_to share_to_social_profile_path(@profile, social: "instagram"), class: "btn-primary", remote: true do %>
-							<div class="fa fa-instagram"></div>
-							<p>Share to Instagram Story</p>
-						<% end %>
-						<div class="result"></div>
+					<%= link_to download_profile_image_profile_path(@profile), class: "btn-primary" do %>
+						<div class="fa fa-download"></div>
+						<p>Download and Share</p>
 					<% end %>
 					<%= link_to share_to_social_profile_path(@profile, social: "twitter"), class: "btn-primary", remote: true do %>
 						<div class="fa fa-twitter"></div>

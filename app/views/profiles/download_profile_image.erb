@@ -1,0 +1,21 @@
+<div class="download_and_share">
+	<div>
+		<%= link_to share_to_social_profile_path(@profile, social: "download"), class: "btn-primary", remote: true do %>
+			<div class="fa fa-download"></div>
+			<p>Download File</p>
+		<% end %>
+		<h2>- OR -</h2>
+		<%= image_tag @profile.generated_profile_img_url, width: "50%", class: "generated-image" %>
+		<% if browser.device.mobile? %>
+			<h2>1. Press and hold image above</h2>
+			<h2>2. Save to Photos</h2>
+			<h2>3. Go to Photos on your device</h2>
+			<h2>4. Press the share icon on your phone (<div class="fa fa-share"></div>)</h2>
+		<% else %>
+			<h2>1. Right Click Image (Ctrl+Click) Above</h2>
+			<h2>2. Choose 'Save Image As'</h2>
+			<h2>3. Save that thang to your computer</h2>
+			<h2>4. Post on your favorite social!</h2>
+		<% end %>
+	</div>
+</div>

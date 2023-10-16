@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile, only: %i[ show edit update randomize destroy share_to_social ]
+  before_action :set_profile, only: %i[ show edit update randomize destroy share_to_social download_profile_image]
 
   # GET /profiles or /profiles.json
   def index
@@ -62,37 +62,7 @@ class ProfilesController < ApplicationController
   def create
     @profile = Profile.new(profile_params)
 
-    # connect to bannerbear
-    bb = Bannerbear::Client.new
-    # send the profile info to the template
-    new_profile = bb.create_image("PowdyxbdM14LZlYBAg",
-      synchronous: true,
-      modifications: [
-        {
-          "name": "Profile_pic",
-          "image_url": @profile.profile_image_url
-        },
-        {
-          "name": "Name_result",
-          "text": "Name: #{@profile.full_name}",
-        },
-        {
-          "name": "Age_result",
-          "text": "Age: #{@profile.age}",
-        },
-        {
-          "name": "Occupation_result",
-          "text": "Occupation: #{@profile.occupation}",
-        },
-      ]
-    )
-    # get the image from bannerbear
-    bb_image_object = bb.get_image(new_profile["uid"])
-    puts 'bb_image_object is: ', bb_image_object
-    if bb_image_object.present?
-      @profile.generated_profile_img_url = bb_image_object["image_url"]
-      @profile.save
-    end
+    generate_bannerbear(@profile)
 
     respond_to do |format|
       if @profile.save
@@ -122,6 +92,7 @@ class ProfilesController < ApplicationController
     respond_to do |format|
       if @profile.update(first_name: @profile.random_first_name, last_name: @profile.random_last_name, occupation: @profile.random_occupation, age: @profile.random_age)
         @profile.save
+        generate_bannerbear(@profile)
         format.html { redirect_to profile_url(@profile), notice: "Profile was successfully randomized." }
         format.json { render :show, status: :ok, location: @profile }
       else
@@ -135,12 +106,7 @@ class ProfilesController < ApplicationController
     @social_network = params["social"]
     if @social_network.present?
       @response_image = @profile.generated_profile_img_url
-      # use image in social media share
-      if @social_network.eql?("twitter")
-        puts "this is for twitter"
-      elsif @social_network.eql?("instagram")
-        puts "this is for instagram"
-      end
+      # all the logic is happening in share_to_social.js.erb
       @response = 'success'
       respond_to do |format|
         format.html { redirect_to :back, notice: 'success' }
@@ -155,6 +121,9 @@ class ProfilesController < ApplicationController
         format.js
       end
     end
+  end
+
+  def download_profile_image
   end
 
   # DELETE /profiles/1 or /profiles/1.json
@@ -177,4 +146,39 @@ class ProfilesController < ApplicationController
     def profile_params
       params.require(:profile).permit(:first_name, :last_name, :occupation, :email, :age, :profile_image, :question_1, :question_2, :question_3, :question_4, :question_5, :generated_profile_img_url)
     end
+
+    def generate_bannerbear(profile)
+      # connect to bannerbear
+      bb = Bannerbear::Client.new
+      # send the profile info to the template
+      new_profile = bb.create_image("PowdyxbdM14LZlYBAg",
+        synchronous: true,
+        modifications: [
+          {
+            "name": "Profile_pic",
+            "image_url": profile.profile_image_url
+          },
+          {
+            "name": "Name_result",
+            "text": "Name: #{profile.full_name}",
+          },
+          {
+            "name": "Age_result",
+            "text": "Age: #{profile.age}",
+          },
+          {
+            "name": "Occupation_result",
+            "text": "Occupation: #{profile.occupation}",
+          },
+        ]
+      )
+      # get the image from bannerbear
+      bb_image_object = bb.get_image(new_profile["uid"])
+      puts 'bb_image_object is: ', bb_image_object
+      if bb_image_object.present?
+        profile.generated_profile_img_url = bb_image_object["image_url"]
+        profile.save
+      end
+    end
+
 end
