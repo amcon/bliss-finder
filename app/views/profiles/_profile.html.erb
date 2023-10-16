@@ -26,11 +26,12 @@
 			</div>
 			<% if @profile.generated_profile_img_url.present? %>
 				<div class="share-container">
-					<% if browser.device.mobile? %>
+					<% if true # browser.device.mobile? %>
 						<%= link_to share_to_social_profile_path(@profile, social: "instagram"), class: "btn-primary", remote: true do %>
 							<div class="fa fa-instagram"></div>
 							<p>Share to Instagram Story</p>
 						<% end %>
+						<div class="result"></div>
 					<% end %>
 					<%= link_to share_to_social_profile_path(@profile, social: "twitter"), class: "btn-primary", remote: true do %>
 						<div class="fa fa-twitter"></div>

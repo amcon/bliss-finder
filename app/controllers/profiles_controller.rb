@@ -134,6 +134,7 @@ class ProfilesController < ApplicationController
   def share_to_social
     @social_network = params["social"]
     if @social_network.present?
+      @response_image = @profile.generated_profile_img_url
       # use image in social media share
       if @social_network.eql?("twitter")
         puts "this is for twitter"
