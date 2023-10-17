@@ -17,11 +17,11 @@
     <%= f.hidden_field(:occupation, value: "#{Profile::OCCUPATIONS&.sample}") %>
     <%= f.hidden_field(:age, value: "#{(18..100).to_a.sample}") %>
     <%= f.hidden_field(:ip_address, value: request.remote_ip) %>
-    <div class=form-input>
+    <div class="form-input small">
       <label>Upload an Image</label>
       <button type="button" id="profile_widget_opener" class="cloudinary-button">Upload files</button>
     </div>
-    <div class="form-input">
+    <div class="form-input small">
       <%= f.label :email, "*Email" %>
       <%= f.text_field :email, required: true%>
     </div>
