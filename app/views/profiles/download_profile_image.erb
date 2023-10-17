@@ -1,6 +1,10 @@
 <div class="download_and_share profile">
 	<div class="main-info">
 		<div class="share-container">
+			<%= link_to profile_path(@profile), class: "back-button" do %>
+				<div class="fa fa-chevron-left"></div>
+				<h2>Back to Profile</h2>
+			<% end %>
 			<% if browser.device.mobile? %>
 				<h3>1. Press and hold image above</h3>
 				<div class="generated-image-container">
