@@ -43,11 +43,11 @@ header {
 	a {
 		// display: block;
 		// width: 100%;
-		h1 {
-			margin: 0;
-			font-size: 1.5rem;
-			// text-align: center;
-		}
+	}
+	h1 {
+		margin: 0;
+		font-size: 1.5rem;
+		// text-align: center;
 	}
 }
 
@@ -318,6 +318,9 @@ a {
 }
 
 footer {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
 	padding: 1rem;
 	min-height: 27vh;
 	background-color: rgb(242, 164, 200);
@@ -325,6 +328,7 @@ footer {
 	border-top: 3px solid rgb(202, 123, 156);
 	h1 {
 		margin: 2rem 0 4rem;
+		font-size: 1.5rem;
 	}
 	.text-right {
 		margin-top: 4rem;
