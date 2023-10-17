@@ -2,11 +2,15 @@
 
 <%= render @profile %>
 
-<div class="profile-nav">
-  <!-- <%= link_to "Edit this profile", edit_profile_path(@profile) %> | -->
-  <!-- <%= link_to "Back to profiles", profiles_path %> -->
-  <%= link_to "Randomize this profile", randomize_profile_path(@profile), method: :put %> |
-  <%= link_to "Create a new profile", new_profile_path %>
-  <!-- | -->
-  <!-- <%= link_to "Destroy this profile", @profile, method: :delete %> -->
-</div>
+<% if @profile.ip_address.eql?(request.remote_ip) %>
+  <div class="profile-nav">
+    <!-- <%= link_to "Edit this profile", edit_profile_path(@profile) %> | -->
+    <!-- <%= link_to "Back to profiles", profiles_path %> -->
+    <%= link_to "Randomize this profile", randomize_profile_path(@profile), method: :put %> |
+    <%= link_to "Create a new profile", new_profile_path %>
+    <!-- | -->
+    <!-- <%= link_to "Destroy this profile", @profile, method: :delete %> -->
+  </div>
+<% else %>
+  <%= link_to "Create your own Profile!", new_profile_path, class: "btn-primary" %>
+<% end %>

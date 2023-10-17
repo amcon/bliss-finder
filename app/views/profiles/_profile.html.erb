@@ -24,7 +24,7 @@
 					<%= link_to "I Need a New Boyfriend", "//found.ee/ineedanewboyfriend", target: "_blank" %> by <%= link_to "Charly Bliss", "https://www.charlybliss.com", target: "_blank" %>
 				</p>
 			</div>
-			<% if @profile.generated_profile_img_url.present? %>
+			<% if @profile.generated_profile_img_url.present? && @profile.ip_address.eql?(request.remote_ip) %>
 				<div class="share-container">
 					<%= link_to download_profile_image_profile_path(@profile), class: "btn-primary" do %>
 						<div class="fa fa-download"></div>

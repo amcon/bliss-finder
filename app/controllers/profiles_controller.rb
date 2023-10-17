@@ -90,7 +90,7 @@ class ProfilesController < ApplicationController
 
   def randomize
     respond_to do |format|
-      if @profile.update(first_name: @profile.random_first_name, last_name: @profile.random_last_name, occupation: @profile.random_occupation, age: @profile.random_age)
+      if @profile.update(first_name: @profile.random_first_name, last_name: @profile.random_last_name, occupation: @profile.random_occupation, age: @profile.random_age, ip_address: request.remote_ip)
         @profile.save
         generate_bannerbear(@profile)
         format.html { redirect_to profile_url(@profile), notice: "Profile was successfully randomized." }
@@ -142,11 +142,6 @@ class ProfilesController < ApplicationController
       @profile = Profile.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
-    def profile_params
-      params.require(:profile).permit(:first_name, :last_name, :occupation, :email, :age, :profile_image, :question_1, :question_2, :question_3, :question_4, :question_5, :generated_profile_img_url)
-    end
-
     def generate_bannerbear(profile)
       # connect to bannerbear
       bb = Bannerbear::Client.new
@@ -179,6 +174,11 @@ class ProfilesController < ApplicationController
         profile.generated_profile_img_url = bb_image_object["image_url"]
         profile.save
       end
+    end
+
+    # Only allow a list of trusted parameters through.
+    def profile_params
+      params.require(:profile).permit(:first_name, :last_name, :occupation, :email, :age, :profile_image, :question_1, :question_2, :question_3, :question_4, :question_5, :generated_profile_img_url, :ip_address)
     end
 
 end
