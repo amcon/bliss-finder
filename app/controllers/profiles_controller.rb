@@ -91,7 +91,7 @@ class ProfilesController < ApplicationController
   def randomize
     respond_to do |format|
       if @profile.update(first_name: @profile.random_first_name, last_name: @profile.random_last_name, occupation: @profile.random_occupation, age: @profile.random_age, ip_address: request.remote_ip)
-        @profile.save
+        # @profile.save # currently saving with generate_bannerbear
         generate_bannerbear(@profile)
         format.html { redirect_to profile_url(@profile), notice: "Profile was successfully randomized." }
         format.json { render :show, status: :ok, location: @profile }
@@ -169,7 +169,7 @@ class ProfilesController < ApplicationController
       )
       # get the image from bannerbear
       bb_image_object = bb.get_image(new_profile["uid"])
-      puts 'bb_image_object is: ', bb_image_object
+      puts 'new_profile is: ', new_profile
       if bb_image_object.present?
         profile.generated_profile_img_url = bb_image_object["image_url"]
         profile.save
