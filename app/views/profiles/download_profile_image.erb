@@ -1,21 +1,33 @@
-<div class="download_and_share">
-	<div>
-		<%= link_to share_to_social_profile_path(@profile, social: "download"), class: "btn-primary", remote: true do %>
-			<div class="fa fa-download"></div>
-			<p>Download File</p>
-		<% end %>
-		<h2>- OR -</h2>
-		<%= image_tag @profile.generated_profile_img_url, width: "50%", class: "generated-image" %>
-		<% if browser.device.mobile? %>
-			<h2>1. Press and hold image above</h2>
-			<h2>2. Save to Photos</h2>
-			<h2>3. Go to Photos on your device</h2>
-			<h2>4. Press the share icon on your phone (<div class="fa fa-share"></div>)</h2>
-		<% else %>
-			<h2>1. Right Click Image (Ctrl+Click) Above</h2>
-			<h2>2. Choose 'Save Image As'</h2>
-			<h2>3. Save that thang to your computer</h2>
-			<h2>4. Post on your favorite social!</h2>
-		<% end %>
+<div class="download_and_share profile">
+	<div class="main-info">
+		<div class="share-container">
+			<% if browser.device.mobile? %>
+				<h3>1. Press and hold image above</h3>
+				<div class="generated-image-container">
+					<%= image_tag @profile.generated_profile_img_url, width: "50%", class: "generated-image" %>
+				</div>
+				<h3>2. Save to Photos</h3>
+				<h3>3. Go to Photos on your device & select the photo</h3>
+				<h3>4. Press the share icon on your phone (<div class="fa fa-share"></div>)</h3>
+				<h3>5. Share to your favorite app!</h3>
+			<% else %>
+				<%= link_to share_to_social_profile_path(@profile, social: "download"), class: "btn-primary", remote: true do %>
+					<div class="fa fa-download"></div>
+					<p>Download File</p>
+				<% end %>
+				<h3 class="text-center">- OR -</h3>
+				<div class="generated-image-container">
+					<%= image_tag @profile.generated_profile_img_url, width: "50%", class: "generated-image" %>
+				</div>
+				<h3>1. Right Click Image (Ctrl+Click) Above</h3>
+				<h3>2. Choose 'Save Image As'</h3>
+				<h3>3. Save to your computer</h3>
+				<h3>4. Post on your favorite social media!</h3>
+			<% end %>
+			<div class="social-tags">
+				<h3>Tag us: @charlybliss</h3>
+				<h3>Use hashtag: #ineedanewboyfriend</h3>
+			</div>
+		</div>
 	</div>
 </div>
