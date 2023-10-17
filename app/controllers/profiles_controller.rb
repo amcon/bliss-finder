@@ -20,7 +20,7 @@ class ProfilesController < ApplicationController
       title: "Name: #{@profile.full_name}. Age: #{@profile.age}. Occupation: #{@profile.occupation}. Favorite Song: 'I Need a New Boyfriend' by Charly Bliss",
       description: "Name: #{@profile.full_name}. Age: #{@profile.age}. Occupation: #{@profile.occupation}. Favorite Song: 'I Need a New Boyfriend' by Charly Bliss",
       image: {
-        _: @profile.profile_image_url
+        _: @profile.profile_image_url.present? ? @profile.profile_image_url : "https://res.cloudinary.com/dns0hx43q/image/upload/v1697579451/xmijosnn9wvko4fa8qno.png"
       }
     }
 
