@@ -17,7 +17,7 @@ class ProfilesController < ApplicationController
       card: "summary",
       site: "@charlybliss",
       url: request.original_url,
-      title: "Bliss-Finder.com",
+      title: "Name: #{@profile.full_name}. Age: #{@profile.age}. Occupation: #{@profile.occupation}. Favorite Song: 'I Need a New Boyfriend' by Charly Bliss",
       description: "Name: #{@profile.full_name}. Age: #{@profile.age}. Occupation: #{@profile.occupation}. Favorite Song: 'I Need a New Boyfriend' by Charly Bliss",
       image: {
         _: @profile.profile_image_url
@@ -33,7 +33,7 @@ class ProfilesController < ApplicationController
     # <meta name="twitter:image" content="http://graphics8.nytimes.com/images/2012/02/19/us/19whitney-span/19whitney-span-articleLarge.jpg">
 
     set_meta_tags og: {
-      title: @profile.full_name,
+      title: "Name: #{@profile.full_name}. Age: #{@profile.age}. Occupation: #{@profile.occupation}. Favorite Song: 'I Need a New Boyfriend' by Charly Bliss",
       site_name: :site,
       type: "website",
       url: request.original_url,
