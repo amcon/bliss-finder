@@ -33,7 +33,7 @@ body {
 }
 
 header {
-	padding: 1rem;
+	padding: .5rem 1rem;
 	min-height: 10vh;
 	background: rgb(250,224,253);
 	background: linear-gradient(90deg, rgba(250,224,253,1) 0%, rgba(248,216,215,1) 53%, rgba(255,255,255,1) 76%);
@@ -45,7 +45,7 @@ header {
 		// width: 100%;
 		h1 {
 			margin: 0;
-			font-size: 1.75rem;
+			font-size: 1.5rem;
 			// text-align: center;
 		}
 	}
