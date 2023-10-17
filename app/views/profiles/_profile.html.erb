@@ -2,7 +2,9 @@
 	<div class="profile" id="<%= dom_id profile %>">
 		<div class="image-container">
 			<% if @profile.profile_image.present? %>
-				<%= cl_image_tag @profile.profile_image_url, :width=>150 %>
+				<%= cl_image_tag @profile.profile_image_url, width: 150 %>
+			<% else %>
+				<%= image_tag "banner-noheading.jpeg", width: 150 %>
 			<% end %>
 		</div>
 		<div class="main-info">
