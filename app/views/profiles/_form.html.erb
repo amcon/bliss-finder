@@ -22,7 +22,7 @@
       <button type="button" id="profile_widget_opener" class="cloudinary-button">Upload files</button>
     </div>
     <div class="form-input">
-      <%= f.label :email %>
+      <%= f.label :email, "*Email" %>
       <%= f.text_field :email, required: true%>
     </div>
     <div class="form-input">
@@ -97,6 +97,6 @@
       </div>
     </div>
 
-    <%= f.submit(class: 'btn-primary') %>
+    <%= f.submit(class: 'btn-primary form-submit') %>
   </div>
 <% end %>

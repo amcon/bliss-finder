@@ -85,11 +85,12 @@ input[type="text"] {
 	margin-bottom: 1rem;
 	label, input {
 		display: inline;
+		line-height: 1.75rem;
 	}
 }
 
 .form-input {
-	margin-bottom: 1.5rem;
+	margin-bottom: 5.5rem;
 }
 
 .btn-primary, .cloudinary-button {
@@ -118,6 +119,12 @@ a.btn-primary {
 
 a {
 	text-decoration: none;
+}
+
+.btn-primary.form-submit {
+	text-transform: capitalize;
+	font-size: 1.25rem;
+	padding: 1.25rem;
 }
 
 .landing-link {
