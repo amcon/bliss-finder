@@ -6,7 +6,7 @@
 				<h2>Back to Profile</h2>
 			<% end %>
 			<% if browser.device.mobile? %>
-				<h3>1. Press and hold image above</h3>
+				<h3>1. Press and hold image</h3>
 				<div class="generated-image-container">
 					<%= image_tag @profile.generated_profile_img_url, width: "50%", class: "generated-image" %>
 				</div>
@@ -23,7 +23,7 @@
 				<div class="generated-image-container">
 					<%= image_tag @profile.generated_profile_img_url, width: "50%", class: "generated-image" %>
 				</div>
-				<h3>1. Right Click Image (Ctrl+Click) Above</h3>
+				<h3>1. Right Click Image (Ctrl+Click)</h3>
 				<h3>2. Choose 'Save Image As'</h3>
 				<h3>3. Save to your computer</h3>
 				<h3>4. Post on your favorite social media!</h3>
