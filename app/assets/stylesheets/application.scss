@@ -138,7 +138,7 @@ a {
 
 .back-button {
 	display: inline-block;
-	margin: 2rem 0;
+	margin: 0 0 2rem;
 	div, h2 {
 		display: inline-block;
 		font-size: 1rem;
@@ -166,7 +166,7 @@ a {
 	display: flex;
 	flex-direction: column;
 	.image-container {
-		padding: 1rem;
+		// padding: 1rem;
 		img {
 			width: 100%;
 			max-width: 500px;
@@ -176,11 +176,12 @@ a {
 		}
 	}
 	.main-info {
-		padding: 1rem;
+		// padding: 0 1rem;
+		padding-top: 1rem;
 		.profile-pair {
-			margin-bottom: 3rem;
+			margin-bottom: 1.5rem;
 			h2 {
-				font-size: 1.25rem;
+				font-size: 1rem;
 			}
 			h2, p {
 				display: inline;
@@ -191,10 +192,17 @@ a {
 		.share-container {
 			.btn-primary {
 				margin-bottom: 1rem;
+				padding: 0;
 				.fa {
 					margin-right: 1rem;
-					font-size: 2rem;
+					font-size: 1rem;
 				}
+				p {
+					font-size: .85rem;
+				}
+			}
+			.btn-primary:nth-of-type(2n) {
+				margin-bottom: 0;
 			}
 		}
 	}
@@ -288,12 +296,12 @@ a {
 }
 
 .generated-image {
-	margin: 3rem auto;
+	margin: 1rem 0;
 }
 
 .text-center {
 	text-align: center;
-	margin-top: 4rem;
+	margin-top: 2rem;
 }
 
 .social-tags {
@@ -324,5 +332,11 @@ footer {
 		font-size: .75rem;
 		text-align: right;
 		font-weight: 200;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.profile .image-container img {
+		width: 80%;
 	}
 }

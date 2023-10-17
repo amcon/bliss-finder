@@ -169,9 +169,18 @@ class ProfilesController < ApplicationController
       )
       # get the image from bannerbear
       bb_image_object = bb.get_image(new_profile["uid"])
-      puts 'new_profile is: ', new_profile
-      if bb_image_object.present?
+      if new_profile["error"].present?
+        puts 'new_profile[error] is: ', new_profile["error"]
+        error = true
+      else
+        puts 'new_profile has no errors'
+        error = false
+      end
+      if bb_image_object.present? && error.eql?(false)
+        puts "we're saving it!!", new_profile
         profile.generated_profile_img_url = bb_image_object["image_url"]
+        profile.save
+      else
         profile.save
       end
     end
