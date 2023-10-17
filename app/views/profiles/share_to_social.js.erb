@@ -2,8 +2,13 @@
 // alert("sharing to <%= @social_network %> was a <%= @response %>");
 <% if @social_network.eql?("twitter") %>
 	console.log("sending to twitter");
-	window.open('http://twitter.com/share?url='+encodeURIComponent("<%=request.base_url%>/profiles/<%= @profile.id %>")+'&text='+encodeURIComponent("#ineedanewboyfriend @charlybliss"), '', 'left=0,top=0,width=550,height=450,personalbar=0,toolbar=0,scrollbars=0,resizable=0');
+	var newWin = window.open('http://twitter.com/share?url='+encodeURIComponent("<%=request.base_url%>/profiles/<%= @profile.id %>")+'&text='+encodeURIComponent("#ineedanewboyfriend @charlybliss"), '', 'left=0,top=0,width=550,height=450,personalbar=0,toolbar=0,scrollbars=0,resizable=0');
 	// window.open("https://twitter.com/intent/tweet?url=https://www.bliss-finder.com&text=Hello%20world")
+
+	if (!newWin || newWin.closed || typeof newWin.closed=='undefined') { 
+		//POPUP BLOCKED
+		confirm("You'll have to disable Pop-up blocker to share");
+	}
 <% elsif @social_network.eql?("instagram") %>
 	console.log("sending to instagram");
 
