@@ -15,5 +15,8 @@ Rails.application.routes.draw do
   get :terms, to: 'static#terms'
   get :coming_soon, to: 'static#coming_soon'
   get :home, to: 'static#home'
+  get '404', to: 'exceptions#page_not_found'
+  get '422', to: 'exceptions#unprocessable'
+  get '500', to: 'exceptions#server_error'
 
 end
