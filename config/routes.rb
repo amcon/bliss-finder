@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "profiles#new"
-  root "static#coming_soon"
+  root "static#home"
 
   get :terms, to: 'static#terms'
   get :coming_soon, to: 'static#coming_soon'
