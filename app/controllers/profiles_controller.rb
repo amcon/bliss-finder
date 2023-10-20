@@ -167,6 +167,8 @@ class ProfilesController < ApplicationController
           },
         ]
       )
+      # when bannerbear runs out of API uses, it will return an error hash. testing to see if this breaks things manually here:
+      # new_profile = {"error"=>"ran out of bannerbear uses", "code"=>"402"}
       # get the image from bannerbear
       bb_image_object = bb.get_image(new_profile["uid"])
       if new_profile["error"].present?
